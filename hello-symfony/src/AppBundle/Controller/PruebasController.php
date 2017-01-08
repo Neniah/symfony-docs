@@ -8,15 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PruebasController extends Controller
 {
-  /*
-  *  @Route()
-  */
-  public functionindexAction(Request $request){
 
-    return $this->render('AppBundle:Pruebas:index.html.twig', away(
-      'comment' => 'I send you this from Action Controller.';
+  public function indexAction(Request $request){
+
+    return $this->render('AppBundle:Pruebas:index.html.twig', array(
+      'comment' => 'I send you this from Action Controller.'
     ));
   }
+
+
 
 }
 ?>
