@@ -20,7 +20,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/hello-word", name="helloworld")
+     * @Route("/hello-word", name="helloWorld")
      */
     public function helloWorldAction(){
       echo "<h1>Hello World!!</h1>";
