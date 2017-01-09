@@ -1,8 +1,8 @@
-car:
-    resource: "@CarBundle/Controller/"
+app:
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
+car:
+    resource: "@CarBundle/Controller/"
     type:     annotation
