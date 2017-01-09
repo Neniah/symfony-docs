@@ -1,5 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  TODO LIST index
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Todo</th>
+        <th>Due Date</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr> <th scope="row">1</th>
+        <td>NAME</td>
+        <td>DUE DATE</td>
+        <td><a href="{{path('todo_details', {id: 1})}}" class="btn btn-success">Details</a></td> 
+      </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td> </tr>
+          <tr> <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
 {% endblock %}
