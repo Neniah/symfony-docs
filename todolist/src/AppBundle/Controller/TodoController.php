@@ -26,7 +26,7 @@ class TodoController extends Controller
         return $this->render('todo/create.html.twig');
     }
     /**
-     * @Route("/todos/edit/{idç}", name="todo_edit")
+     * @Route("/todos/edit/{id}", name="todo_edit")
      */
     public function editAction($id, Request $request)
     {
