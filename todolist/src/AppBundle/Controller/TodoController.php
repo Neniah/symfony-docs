@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Todo;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,8 +14,13 @@ class TodoController extends Controller
      */
     public function listAction()
     {
+        $todos = $this->getDoctrine()
+          ->getRepository('AppBundle:Todo')
+          ->findAll();
         // replace this example code with whatever you need
-        return $this->render('todo/index.html.twig');
+        return $this->render('todo/index.html.twig', array(
+          'todos' => $todos
+        ));
     }
 
     /**
