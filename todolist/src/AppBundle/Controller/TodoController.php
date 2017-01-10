@@ -56,6 +56,23 @@ class TodoController extends Controller
           $priority = $form['priority']->getData();
           $due_date = $form['due_date']->getData();
 
+          $now = new\DateTime('now');
+          $todo->setName($name);
+          $todo->setCategory($category);
+          $todo->setDescription($description);
+          $todo->setPriority($priority);
+          $todo->setDueDate($due_date);
+          $todo->setCreateDate($now);
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($todo);
+          $em->flush();
+
+          $this->addFlash(
+            'notice', 'Todo Added'
+          );
+
+          return $this->redirectToRoute('todo_list');
         }
         // replace this example code with whatever you need
         return $this->render('todo/create.html.twig', array('form' => $form->createView()));
