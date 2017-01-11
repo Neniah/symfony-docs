@@ -99,7 +99,7 @@ class TodoController extends Controller
             ->add('description', TextType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
             ->add('priority', ChoiceType::class, array('choices' => array('Low' => 'Low', 'Nomal' => 'Normal', 'High' => 'High'),'attr' => array('class' => 'form-control', 'style' => 'margin-bottom:15px')))
             ->add('due_date', DateType::class, array('attr' => array( 'style' => 'margin-bottom:15px')))
-            ->add('save', SubmitType::class, array('label' => 'Create todo', 'attr' => array('class' => 'btn btn-success btn-block', 'style' => 'margin-bottom:15px')))
+            ->add('save', SubmitType::class, array('label' => 'Update todo', 'attr' => array('class' => 'btn btn-success btn-block', 'style' => 'margin-bottom:15px')))
             ->getForm();
 
           $form->handleRequest($request);
@@ -138,14 +138,6 @@ class TodoController extends Controller
         ));
     }
 
-    /**
-     * @Route("/todos/delete/{id}", name="todo_delete")
-     */
-    public function deleteAction($id)
-    {
-        // replace this example code with whatever you need
-        return $this->render('todo/index.html.twig');
-    }
 
     /**
      * @Route("/todos/details/{id}", name="todo_details")
@@ -159,5 +151,22 @@ class TodoController extends Controller
       return $this->render('todo/details.html.twig', array(
         'todo' => $todo
       ));
+    }
+
+    /**
+     * @Route("/todos/delete/{id}", name="todo_delete")
+     */
+    public function deleteAction($id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $todo = $em->getRepository('AppBundle:Todo')->find($id);
+
+      $em->remove($todo);
+      $em->flush();
+      $this->addFlash(
+        'notice', 'Todo Removed'
+      );
+
+      return $this->redirectToRoute('todo_list');
     }
 }
